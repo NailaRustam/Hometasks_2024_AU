@@ -1,0 +1,74 @@
+# Gerekli kütüphaneleri yükleyin
+install.packages("readxl")
+library(readxl)
+
+# Veriyi çekmek için dosya yolunu belirtin
+dosya_yolu <- "C:/Users/Naile Ismayilzade/Desktop/sampling folder/Sampling for STM/econregion.xlsx"
+
+# Veriyi okuyun
+veri <- read_excel(dosya_yolu)
+
+# Veriyi görüntüleyin
+head(veri)
+
+n <- 600 # Gözlem sayısı
+YADS<- rnorm(n, mean = 4, sd = 1) # Bağımsız değişken 1
+BDDİ<- rnorm(n, mean = 3, sd = 1) # Bağımsız değişken 2
+EŞFŞ<- rnorm(n, mean = 4, sd = 1) # Bağımsız değişken 3
+ATBS <- rnorm(n, mean = 4, sd = 1) # Bağımsız değişken 4
+YASD<- rnorm(n, mean = 4, sd = 1) # Bağımsız değişken 5
+y <- 3 + 2*YADS - 1.5*BDDİ + 0.5*EŞFŞ + 1.8*ATBS - 1.2*YASD + rnorm(n, mean = 0, sd = 2) # Bağımlı değişken
+
+# Oluşturulan veri setini bir veri çerçevesine dönüştürme
+data <- data.frame(y, YADS,	BDDİ,	EŞFŞ,	ATBS,	YASD)
+
+# Oluşturulan veri setini gösterme
+head(data)
+
+# Dağılımları keşif
+# Histogram oluşturma
+hist(y)
+
+# Kutu grafiği oluşturma
+boxplot(y)
+
+# Q-Q plot oluşturma
+qqnorm(y)
+qqline(y)
+
+# Kantillerden yararlanma
+summary(y)
+
+# Bağımsız değişkenler arasındaki korelasyonu hesaplama
+correlation_matrix <- cor(data.frame(YADS, BDDİ, EŞFŞ, ATBS, YASD))
+print(correlation_matrix)
+
+# corrplot paketini yükleme
+install.packages("corrplot")
+library(corrplot)
+
+# Korelasyon matrisini görselleştirme
+corrplot(correlation_matrix, method = "color")
+
+# Bağımsız değişkenlerin grafiğini çizme
+par(mfrow=c(1,3)) # Grafiklerin yan yana yerleştirilmesi için ayar
+plot(YADS, y, main = "YADS vs. y", xlab = "YADS", ylab = "y", col = "blue", pch = 16)
+plot(BDDİ, y, main = "BDDİ vs. y", xlab = "BDDİ", ylab = "y", col = "purple", pch = 16)
+plot(EŞFŞ, y, main = "EŞFŞ vs. y", xlab = "EŞFŞ", ylab = "y", col = "green", pch = 16)
+
+Yaptığım işlemler:
+Veri seti : Bekar bireylrin stres nedenlerinin ölçüldüğü bir çalışma elde edilmiştir.
+1.	Kütüphanelerin Yüklenmesi: İlk olarak, readxl paketi yüklenir. Bu paket, Excel dosyalarını okumak için gereklidir.
+2.	Dosya Yolunun Belirtilmesi ve Verinin Okunması: dosya_yolu değişkeni aracılığıyla belirtilen Excel dosyası okunur ve read_excel() fonksiyonu kullanılarak veri adlı bir değişkene atanır.
+3.	Verinin Görüntülenmesi: head() fonksiyonu ile verinin ilk birkaç satırı ekrana yazdırılır. Bu, verinin yapısını anlamak için kullanılır.
+4.	Gözlem Sayısının Belirlenmesi: n değişkeni ile gözlem sayısı belirlenir. Bu durumda, 600 gözlem olduğu varsayılmıştır.
+5.	Bağımsız Değişkenlerin Oluşturulması: Rastgele normal dağıtılmış veriler kullanılarak YADS, BDDİ, EŞFŞ, ATBS, YASD adlı beş bağımsız değişken oluşturulur. (değişkenlerin isimleri: )
+6.	Bağımlı Değişkenin Oluşturulması: Belirli bir formül kullanılarak y adlı bağımlı değişken oluşturulur. Bu değişken, önceden belirlenen bağımsız değişkenlerin bir fonksiyonu olarak tanımlanır.
+7.	Veri Çerçevesine Dönüştürme: Oluşturulan bağımsız ve bağımlı değişkenler bir veri çerçevesine dönüştürülür ve data adlı bir değişkene atanır. Bu, daha kolay işlem yapmak için veriyi düzenler.
+8.	Veri Setinin Görüntülenmesi: Oluşturulan veri setinin ilk birkaç satırı görüntülenir.
+9.	Dağılımların Keşfi: Bağımlı değişkenin dağılımı incelenir ve görselleştirilir. Histogram, kutu grafiği ve Q-Q plot oluşturulur, ayrıca özet istatistikler hesaplanır.
+10.	Bağımsız Değişkenler Arasındaki Korelasyonun Hesaplanması: Oluşturulan bağımsız değişkenler arasındaki korelasyon katsayıları hesaplanır.
+11.	Korelasyon Matrisinin Görselleştirilmesi: Korelasyon matrisi corrplot paketi kullanılarak görselleştirilir.
+12.	Bağımsız Değişkenlerin Grafiğinin Çizilmesi: Bağımsız değişkenlerin bağımlı değişkene olan ilişkisi grafikleştirilir. par() fonksiyonu kullanılarak grafikler yan yana yerleştirilir.
+
+Not: Hocam bu veri seti benim tez çalışmamda elde ettiğim veriydi ve analizleri spss ile ve excell üzerinden yapmıştım, ödev bağlamında yaptığım işlemleri o zamanlar elde ettiğim sonuçlarla kontrol ederek gittim, Teşekkür!
