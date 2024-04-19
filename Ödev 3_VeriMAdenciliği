@@ -62,7 +62,7 @@ Veri seti : Bekar bireylrin stres nedenlerinin ölçüldüğü bir çalışma el
 2.	Dosya Yolunun Belirtilmesi ve Verinin Okunması: dosya_yolu değişkeni aracılığıyla belirtilen Excel dosyası okunur ve read_excel() fonksiyonu kullanılarak veri adlı bir değişkene atanır.
 3.	Verinin Görüntülenmesi: head() fonksiyonu ile verinin ilk birkaç satırı ekrana yazdırılır. Bu, verinin yapısını anlamak için kullanılır.
 4.	Gözlem Sayısının Belirlenmesi: n değişkeni ile gözlem sayısı belirlenir. Bu durumda, 600 gözlem olduğu varsayılmıştır.
-5.	Bağımsız Değişkenlerin Oluşturulması: Rastgele normal dağıtılmış veriler kullanılarak YADS, BDDİ, EŞFŞ, ATBS, YASD adlı beş bağımsız değişken oluşturulur. (değişkenlerin isimleri: )
+5.	Bağımsız Değişkenlerin Oluşturulması: Rastgele normal dağıtılmış veriler kullanılarak YADS, BDDİ, EŞFŞ, ATBS, YASD adlı beş bağımsız değişken oluşturulur. 
 6.	Bağımlı Değişkenin Oluşturulması: Belirli bir formül kullanılarak y adlı bağımlı değişken oluşturulur. Bu değişken, önceden belirlenen bağımsız değişkenlerin bir fonksiyonu olarak tanımlanır.
 7.	Veri Çerçevesine Dönüştürme: Oluşturulan bağımsız ve bağımlı değişkenler bir veri çerçevesine dönüştürülür ve data adlı bir değişkene atanır. Bu, daha kolay işlem yapmak için veriyi düzenler.
 8.	Veri Setinin Görüntülenmesi: Oluşturulan veri setinin ilk birkaç satırı görüntülenir.
